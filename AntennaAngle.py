@@ -9,6 +9,7 @@ num_samples = 1024 * 1024  # Number of samples per capture
 num_rotations = 12  # Number of antenna rotations
 angles = np.linspace(0, 360, num_rotations)
 direct_sampling_mode = 2 if center_freq < 24e6 else 0
+msg_str = f"Rotate antenna {360/num_rotations} degrees <press enter>"
 
 # Initialize RTL-SDR
 sdr = RtlSdr()
@@ -19,7 +20,6 @@ sdr.gain = 'auto'
 
 # Initialize arrays to store results
 signal_strengths = []
-msg_str = f"Rotate antenna {360/num_rotations} degrees. <press enter>"
 
 for angle in angles:
     # Rotate antenna, capture samples, calculate signal strength
